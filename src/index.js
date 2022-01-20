@@ -13,15 +13,15 @@ app.register(require('fastify-static'), {
 
 app.register(require('fastify-socket.io'))
 app.register(require('./router'))
-
+app.register(require('./socket').init)
 
 app.listen(process.env.PORT || 3000, '::', err => {
   if (err) {
     app.log.error(err)
     process.exit(1)
   }
-  app.io.on("connection", (socket) => {
-    app.log.warn('new user')
-  });
+  // app.io.on("connection", (socket) => {
+  //   app.log.warn('new user')
+  // });
 
 })

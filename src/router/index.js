@@ -12,16 +12,9 @@ const routes = [
   },
   {
     method: methods.GET,
-    url: urls.TEST,
+    url: urls.ROOT,
     // schema: schemas.healthCheck,
-    handler: actions.testSocket
-  },
-  //room
-  {
-    method: methods.GET,
-    url: urls.ROOM,
-    schema: schemas.joinRoom,
-    handler: actions.joinRoom
+    handler: actions.root
   },
 ]
 

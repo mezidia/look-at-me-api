@@ -1,5 +1,5 @@
 const action = (req, res) => {
-  res.send('joined')
+  res.send()
 }
 
 module.exports = action
