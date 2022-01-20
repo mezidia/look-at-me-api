@@ -20,7 +20,10 @@
   "homepage": "https://github.com/mezidia/look-at-me-api#readme",
   "dependencies": {
     "dotenv": "^14.2.0",
-    "fastify": "^3.27.0"
+    "fastify": "^3.27.0",
+    "fastify-socket.io": "^3.0.0",
+    "fastify-static": "^4.5.0",
+    "socket.io": "^4.4.1"
   },
   "devDependencies": {
     "fastify-swagger": "^4.13.1",

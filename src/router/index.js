@@ -9,7 +9,20 @@ const routes = [
     url: urls.HEALTH_CHECK,
     schema: schemas.healthCheck,
     handler: actions.healthCheck
-  }
+  },
+  {
+    method: methods.GET,
+    url: urls.TEST,
+    // schema: schemas.healthCheck,
+    handler: actions.testSocket
+  },
+  //room
+  {
+    method: methods.GET,
+    url: urls.ROOM,
+    schema: schemas.joinRoom,
+    handler: actions.joinRoom
+  },
 ]
 
 const init = async app => routes.map(r => app.route(r))
