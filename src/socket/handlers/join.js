@@ -23,6 +23,8 @@ function action(args) {
     })
   }
 
+  //FIXME: REMOVE
+  
   socket.emit(events.ADD_PEER, {
     peerId: 'clientId',
     createOffer: true,

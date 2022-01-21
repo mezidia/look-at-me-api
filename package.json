@@ -21,6 +21,7 @@
   "dependencies": {
     "dotenv": "^14.2.0",
     "fastify": "^3.27.0",
+    "fastify-cors": "^6.0.2",
     "fastify-socket.io": "^3.0.0",
     "fastify-static": "^4.5.0",
     "socket.io": "^4.4.1",

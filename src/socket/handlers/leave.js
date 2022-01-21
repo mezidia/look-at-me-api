@@ -1,5 +1,5 @@
 const events = require('../events.js')
-const {version, validate} = require('uuid')
+const { version, validate } = require('uuid')
 const { shareRoomsInfo } = require('../helpers.js');
 
 function action(args) {
@@ -22,7 +22,6 @@ function action(args) {
     });
     socket.leave(roomId);
   }
-
 
   shareRoomsInfo(fastify);
 }

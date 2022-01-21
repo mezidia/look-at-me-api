@@ -17,6 +17,6 @@ function shareRoomsInfo(fastify) {
 module.exports = {
   getClientRooms,
   shareRoomsInfo,
-  // log
+
 }
 

@@ -11,6 +11,15 @@ app.register(require('fastify-static'), {
   prefix: '/', 
 })
 
+fastify.register(require('fastify-cors'), { 
+  origin: (origin, cb) => {
+    if(/localhost/.test(origin)){
+      cb(null, true)
+      return
+    }
+    cb(new Error("Not allowed"))
+  }
+})
 app.register(require('fastify-socket.io'))
 app.register(require('./router'))
 app.register(require('./socket'))
@@ -20,8 +29,5 @@ app.listen(process.env.PORT || 3000, '::', err => {
     app.log.error(err)
     process.exit(1)
   }
-  // app.io.on("connection", (socket) => {
-  //   app.log.warn('new user')
-  // });
 
 })
