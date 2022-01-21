@@ -10,7 +10,10 @@
   я крутий
   <script src="/socket.io/socket.io.js"></script>
 <script>
-  var socket = io('/room/id');
+  const socket = io('/');
+  socket.emit('join', { roomId: 'myRoomId' })
+  socket.on('addPeer', (data) => console.log(data))
+
 </script>
 </body>
 </html>

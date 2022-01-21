@@ -1,6 +1,7 @@
 const routes = {
   HEALTH_CHECK: '/health-check',
-  ROOT: '/'
+  ROOT: '/',
+  SOCKET: '/socket'
 }
 
 module.exports = routes

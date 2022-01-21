@@ -1,11 +1,12 @@
-const fastify = require('./index.js').fastifyReady
-
-const join = wrapWithFastify(fastify, require('./join'))
-const leave =  wrapWithFastify(fastify, require('./leave.js'))
-
-const wrapWithFastify = (fastify, fn) => (...args) => fn(args)
+const join = require('./join.js')
+const leave = require('./leave.js')
+const acceptICE = require('./acceptICE.js')
+const acceptSDP = require('./acceptSDP.js')
 
 module.exports = {
   join,
-  leave
+  leave,
+  acceptICE,
+  acceptSDP,
+
 }
