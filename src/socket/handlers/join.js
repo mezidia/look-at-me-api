@@ -4,7 +4,7 @@ const { shareRoomsInfo } = require('../helpers.js');
 function action(args) {
   const { roomId } = args
   const { rooms: joinedRooms } = socket;
-
+  fastify.log.warn('join')
   if (Array.from(joinedRooms).includes(roomId)) {
     return console.warn(`Already joined to ${roomId}`);
   }
@@ -22,13 +22,6 @@ function action(args) {
       createOffer: true,
     })
   }
-
-  //FIXME: REMOVE
-  
-  socket.emit(events.ADD_PEER, {
-    peerId: 'clientId',
-    createOffer: true,
-  })
 
   socket.join(roomId);
   shareRoomsInfo(fastify);

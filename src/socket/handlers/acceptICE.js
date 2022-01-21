@@ -2,8 +2,8 @@ const events = require('../events.js')
 
 function action(args) {
   const { peerId, iceCandidate } = args
-
-  io.to(peerId).emit(events.ICE_CANDIDATE, {
+  fastify.log.warn('acceptICE')
+  fastify.io.to(peerId).emit(events.ICE_CANDIDATE, {
     peerId: socket.id,
     iceCandidate,
   });
