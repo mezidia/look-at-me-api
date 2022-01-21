@@ -11,16 +11,12 @@ app.register(require('fastify-static'), {
   prefix: '/', 
 })
 
-fastify.register(require('fastify-cors'), { 
-  origin: (origin, cb) => {
-    if(/localhost/.test(origin)){
-      cb(null, true)
-      return
-    }
-    cb(new Error("Not allowed"))
+app.register(require('fastify-socket.io'), {
+  cors: {
+    origin: 'http://localhost:3000',
+    methods: ['GET']
   }
 })
-app.register(require('fastify-socket.io'))
 app.register(require('./router'))
 app.register(require('./socket'))
 
