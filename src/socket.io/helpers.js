@@ -14,9 +14,16 @@ function shareRoomsInfo(fastify) {
   })
 }
 
+function sendError(fastify, socket, msg) {
+  fastify.io.to(socket).emit(events.ERROR, {
+    msg
+  })
+}
+
 module.exports = {
   getClientRooms,
   shareRoomsInfo,
+  sendError,
 
 }
 

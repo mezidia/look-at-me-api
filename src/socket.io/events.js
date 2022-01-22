@@ -10,6 +10,7 @@ const EVENTS = {
   SESSION_DESCRIPTION: 'sdp',
   SHARE_USER_INFO: 'shareUserInfo',
   ACCEPT_USER_INFO: 'acceptUserInfo',
+  ERROR: 'error',
 };
 
 module.exports = EVENTS;
