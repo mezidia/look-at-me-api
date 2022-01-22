@@ -5,7 +5,8 @@ const events = require('./events')
 function getClientRooms(fastify) {
   const { rooms } = fastify.io.sockets.adapter;
 
-  return Array.from(rooms.keys()).filter(roomID => validate(roomID) && version(roomID) === 4);
+  // return Array.from(rooms.keys()).filter(roomID => validate(roomID) && version(roomID) === 4);
+  return rooms
 }
 
 function shareRoomsInfo(fastify) {
