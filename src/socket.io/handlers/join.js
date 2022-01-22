@@ -1,15 +1,17 @@
 const events = require('../events.js')
-const { shareRoomsInfo, sendError } = require('../helpers.js');
+const { shareRoomsInfo, sendError, getAllRooms } = require('../helpers.js');
 
 function action({ roomId, isNewRoom }) {
   const { rooms: joinedRooms } = socket;
+
+  const allValidRooms = getAllRooms(socket)
 
   if (Array.from(joinedRooms).includes(roomId)) {
     sendError(fastify, socket, `Already joined to ${roomId}!`)
     return;
   }
 
-  if (!Array.from(joinedRooms).includes(roomId) && !isNewRoom) {
+  if (!allValidRooms.includes(roomId) && !isNewRoom) {
     sendError(fastify, socket, `Room ${roomId} does not exist!`)
     return;
   }
