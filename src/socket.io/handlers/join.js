@@ -11,12 +11,14 @@ function action({ roomId }) {
 
   const clients = Array.from(fastify.io.sockets.adapter.rooms.get(roomId) || []);
 
-  fastify.log.info({
-    event: 'JOIN',
-    roomId,
-    peerId: socket.id,
-    roomClients: clients
-  })
+  // fastify.log.info({
+  //   event: 'JOIN',
+  //   roomId,
+  //   peerId: socket.id,
+  //   roomClients: clients
+  // })
+
+  fastify.log.info(`event: 'JOIN', roomId: ${roomId}, peerId: ${peerId}, roomClients: ${clients}`)
 
   for (const clientId of clients) {
     fastify.io.to(clientId).emit(events.ADD_PEER, {
