@@ -2,7 +2,6 @@ const handlers = require('./handlers')
 const events = require('./events.js');
 const { version, validate } = require('uuid');
 const { shareRoomsInfo } = require('./helpers');
-const { default: fastify } = require('fastify');
 
 function wrapWith(socket, fastify, fn) {
   this.socket = socket
@@ -34,7 +33,6 @@ function handleDisconnecting(fastify, socket) {
       wrappedLeave({ roomId });
     }
   }
-
 }
 
 const init = async (fastify) => {
