@@ -13,7 +13,7 @@ app.register(require('fastify-socket.io'), {
 app.register(require('./router'))
 app.register(require('./socket.io'))
 
-app.listen(process.env.PORT || 8000, '::', err => {
+app.listen(process.env.PORT || 3000, '::', err => {
   if (err) {
     app.log.error(err)
     process.exit(1)
