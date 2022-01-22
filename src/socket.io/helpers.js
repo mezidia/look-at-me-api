@@ -18,6 +18,7 @@ function getAllRooms(socket) {
 }
 
 function sendError(fastify, socket, msg) {
+  fastify.log.warn(`event: 'ERROR', clientId: ${socket.id}, msg: '${msg}'`)
   fastify.io.to(socket.id).emit(events.ERROR, {
     msg
   })

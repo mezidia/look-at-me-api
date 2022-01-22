@@ -6,13 +6,8 @@ function action({ roomId }) {
   const { rooms } = socket;
   const validRooms = Array.from(rooms).filter(roomId => validate(roomId) && version(roomId) === 4);
 
-  // fastify.log.info({
-  //   event: 'LEAVE',
-  //   roomId,
-  //   clientId: socket.id
-  // })
-
   fastify.log.info(`event: 'LEAVE', roomId: ${roomId}, clientId: ${socket.id}`)
+
   for (const roomId of validRooms) {
     const clients = Array.from(fastify.io.sockets.adapter.rooms.get(roomId) || []);
     
