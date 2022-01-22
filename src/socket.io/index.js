@@ -22,7 +22,10 @@ const registerEventsHandlers = (socket, fastify) => {
 const init = async (fastify) => {
   shareRoomsInfo(fastify);
   fastify.io.on('connection', (socket) => {
-    fastify.log.info('new user')
+    fastify.log.info({
+      event: 'new connection established',
+      id: socket.id
+    })
     registerEventsHandlers(socket, fastify)
     
     socket.on('disconnecting', wrapWith(socket, fastify, handlers.leave));

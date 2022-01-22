@@ -1,16 +1,22 @@
 const events = require('../events.js')
 const { shareRoomsInfo } = require('../helpers.js');
 
-function action(args) {
-  const { roomId } = args
+function action({ roomId }) {
   const { rooms: joinedRooms } = socket;
-  fastify.log.warn(`join ${JSON.stringify(roomId)}, ${JSON.stringify(joinedRooms)}`)
+
   if (Array.from(joinedRooms).includes(roomId)) {
     return console.warn(`Already joined to ${roomId}`);
   }
 
   const clients = Array.from(fastify.io.sockets.adapter.rooms.get(roomId) || []);
-  fastify.log.warn(`clients ${JSON.stringify(clients)}}`)
+
+  fastify.log.info({
+    event: 'JOIN',
+    roomId,
+    peerId: socket.id,
+    roomClients: clients
+  })
+
   for (const clientId of clients) {
     fastify.io.to(clientId).emit(events.ADD_PEER, {
       peerId: socket.id,
@@ -19,7 +25,7 @@ function action(args) {
 
     socket.emit(events.ADD_PEER, {
       peerId: clientId,
-      createOffer: true,
+      createOffer: true
     })
   }
 

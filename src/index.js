@@ -1,29 +1,21 @@
 require('dotenv').config()
-const path = require('path')
 
 const { isProd, appConfig } = require('./config')
-const docs = require('./docs')
 
 const app = require('fastify')(appConfig)
 
-app.register(require('fastify-static'), {
-  root: path.join(__dirname + '/../'),
-  prefix: '/', 
-})
-
 app.register(require('fastify-socket.io'), {
   cors: {
-    origin: 'http://localhost:3000',
+    origin: isProd ? 'http://look-at-me-ws.herokuapp.com/' : 'http://localhost:3000',
     methods: ['GET']
   }
 })
 app.register(require('./router'))
-app.register(require('./socket'))
+app.register(require('./socket.io'))
 
-app.listen(process.env.PORT || 3000, '::', err => {
+app.listen(process.env.PORT || 8000, '::', err => {
   if (err) {
     app.log.error(err)
     process.exit(1)
   }
-
 })

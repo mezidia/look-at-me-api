@@ -7,7 +7,9 @@ const EVENTS = {
   ACCEPT_SDP: 'acceptSDP',
   ACCEPT_ICE: 'acceptICE',
   ICE_CANDIDATE: 'ice',
-  SESSION_DESCRIPTION: 'sdp'
+  SESSION_DESCRIPTION: 'sdp',
+  SHARE_USER_INFO: 'shareUserInfo',
+  ACCEPT_USER_INFO: 'acceptUserInfo',
 };
 
 module.exports = EVENTS;

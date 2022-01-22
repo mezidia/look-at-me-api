@@ -15,13 +15,7 @@ const routes = [
     url: urls.ROOT,
     // schema: schemas.healthCheck,
     handler: actions.root
-  },
-  {
-    method: methods.GET,
-    url: urls.SOCKET,
-    // schema: schemas.healthCheck,
-    handler: actions.testSocket
-  },
+  }
 ]
 
 const init = async app => routes.map(r => app.route(r))

@@ -2,12 +2,14 @@ const events = require('../events.js')
 const { version, validate } = require('uuid')
 const { shareRoomsInfo } = require('../helpers.js');
 
-function action(args) {
-  
+function action({ roomId }) {
   const { rooms } = socket;
-  fastify.log.warn('left')
   const validRooms = Array.from(rooms).filter(roomId => validate(roomId) && version(roomId) === 4)
-
+  fastify.log.info({
+    event: 'LEAVE',
+    roomId,
+    clientId: socket.id
+  })
   for (const roomId of validRooms) {
     const clients = Array.from(fastify.io.sockets.adapter.rooms.get(roomId) || []);
     
