@@ -4,7 +4,7 @@ const { shareRoomsInfo } = require('../helpers.js');
 
 function action({ roomId }) {
   const { rooms } = socket;
-  const validRooms = Array.from(rooms).filter(roomId => validate(roomId) && version(roomId) === 4)
+  const validRooms = Array.from(rooms).filter(roomId => validate(roomId) && version(roomId) === 4);
 
   // fastify.log.info({
   //   event: 'LEAVE',

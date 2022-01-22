@@ -1,6 +1,6 @@
 const handlers = require('./handlers')
 const events = require('./events.js');
-const { shareRoomsInfo } = require('./helpers');
+const { shareRoomsInfo, sendError } = require('./helpers');
 
 function wrapWith(socket, fastify, fn) {
   this.socket = socket
@@ -26,7 +26,11 @@ const init = async (fastify) => {
       event: 'new connection established',
       id: socket.id
     })
-    registerEventsHandlers(socket, fastify)
+
+    registerEventsHandlers(socket, fastify);
+    
+    socket.on('connect_error', sendError);
+    socket.on('connect_failed', sendError);
     
     //socket.on('disconnecting', wrapWith(socket, fastify, handlers.leave));
   });
