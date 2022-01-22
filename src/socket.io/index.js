@@ -28,7 +28,7 @@ const init = async (fastify) => {
     })
     registerEventsHandlers(socket, fastify)
     
-    socket.on('disconnecting', wrapWith(socket, fastify, handlers.leave));
+    //socket.on('disconnecting', wrapWith(socket, fastify, handlers.leave));
   });
 
 }

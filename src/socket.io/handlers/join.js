@@ -18,7 +18,7 @@ function action({ roomId }) {
   //   roomClients: clients
   // })
 
-  fastify.log.info(`event: 'JOIN', roomId: ${roomId}, peerId: ${peerId}, roomClients: ${clients}`)
+  fastify.log.info(`event: 'JOIN', roomId: ${roomId}, who: ${socket.id}, roomClients: ${clients}`)
 
   for (const clientId of clients) {
     fastify.io.to(clientId).emit(events.ADD_PEER, {

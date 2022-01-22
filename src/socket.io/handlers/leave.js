@@ -12,7 +12,7 @@ function action({ roomId }) {
   //   clientId: socket.id
   // })
 
-  fastify.log.info(`event: 'LEAVE', roomId: ${roomId}, clientId: ${clientId}`)
+  fastify.log.info(`event: 'LEAVE', roomId: ${roomId}, clientId: ${socket.id}`)
 
   for (const roomId of validRooms) {
     const clients = Array.from(fastify.io.sockets.adapter.rooms.get(roomId) || []);
