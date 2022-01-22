@@ -15,7 +15,7 @@ function shareRoomsInfo(fastify) {
 }
 
 function sendError(fastify, socket, msg) {
-  fastify.io.to(socket).emit(events.ERROR, {
+  fastify.io.to(socket.id).emit(events.ERROR, {
     msg
   })
 }

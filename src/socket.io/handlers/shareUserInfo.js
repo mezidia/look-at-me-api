@@ -17,13 +17,13 @@ function action({ roomId, nickName, isAdmin }) {
 
   clients.forEach(clientId => {
     fastify.io.to(clientId).emit(events.ACCEPT_USER_INFO, {
-      clientId,
+      clientId: socket.id,
       nickName,
       isAdmin,
     });
 
     socket.emit(events.ACCEPT_USER_INFO, {
-      clientId,
+      clientId: socket.id,
       nickName,
       isAdmin,
     });
