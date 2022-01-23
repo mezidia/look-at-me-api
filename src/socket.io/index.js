@@ -35,18 +35,12 @@ const handleDisconnecting = (socket, fastify, handlers) => {
 const init = async (fastify) => {
   shareRoomsInfo(fastify);
   fastify.io.on('connection', (socket) => {
-    fastify.log.info({
-      event: 'new connection established',
-      id: socket.id
-    })
+    fastify.log.info(`event: 'new socket connection established', id: ${socket.id}`)
 
     registerEventsHandlers(socket, fastify);
-    //FIXME: wrong usage!
-    // socket.on('connect_error', sendError);
-    // socket.on('connect_failed', sendError);
     
     socket.on('disconnect', () => {
-      fastify.log.warn(`event: 'disconnecting', clientId: ${socket.id}`);
+      fastify.log.warn(`event: 'disconnect', clientId: ${socket.id}`);
       handleDisconnecting(socket, fastify, handlers)
     });
   });

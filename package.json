@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npx nodemon --trace-warnings --inspect=9123 ./src",
+    "start": "node ./src",
+    "dev": "npx nodemon --trace-warnings --inspect=9123 ./src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
