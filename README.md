@@ -18,3 +18,19 @@ After that, the app will be running on port 3000, so the platform will be availa
 To run locally, the two repositores have to be cloned: 
 - [look-at-me-api](https://github.com/mezidia/look-at-me-api)
 - [look-at-me](https://github.com/mezidia)
+
+First of all, install dependecies (```$ npm i```) in both directories. 
+
+After that, in look-at-me-api directory you should run 
+```
+$ npm start
+```
+Then build ui with 
+```
+npm run build
+```
+and run application with the:
+```
+npm run start
+```.
+Congrats! You have look-at-me platform on localhost:3000. 
