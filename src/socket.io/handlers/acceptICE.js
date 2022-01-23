@@ -1,7 +1,6 @@
 const events = require('../events.js')
 
-function action(args) {
-  const { peerId, iceCandidate } = args
+function action({ peerId, iceCandidate }) {
 
   // fastify.log.info({
   //   event: 'ICE',

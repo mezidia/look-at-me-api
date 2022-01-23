@@ -12,7 +12,7 @@ function action({ roomId, isNewRoom }) {
   }
 
   if (!allValidRooms.includes(roomId) && !isNewRoom) {
-    sendError(fastify, socket, `Room ${roomId} does not exist!`)
+    sendError(fastify, socket, `404`)
     return;
   }
 
