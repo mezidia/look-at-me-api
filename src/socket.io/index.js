@@ -39,8 +39,8 @@ const init = async (fastify) => {
 
     registerEventsHandlers(socket, fastify);
     
-    socket.on('disconnect', () => {
-      fastify.log.warn(`event: 'disconnect', clientId: ${socket.id}`);
+    socket.on('disconnecting', () => {
+      fastify.log.warn(`event: 'disconnecting', clientId: ${socket.id}`);
       handleDisconnecting(socket, fastify, handlers)
     });
   });
