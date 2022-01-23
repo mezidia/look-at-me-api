@@ -1,7 +1,7 @@
 const events = require('../events.js')
 const { shareRoomsInfo, sendError, getAllRooms } = require('../helpers.js');
 
-function action({ roomId, isNewRoom }) {
+const action = (socket, fastify, { roomId, isNewRoom }) => {
   const { rooms: joinedRooms } = socket;
 
   const allValidRooms = getAllRooms(socket)

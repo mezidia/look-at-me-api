@@ -3,10 +3,10 @@ const events = require('./events.js');
 const { shareRoomsInfo, sendError } = require('./helpers');
 const { version, validate } = require('uuid');
 
-function wrapWith(socket, fastify, fn) {
-  this.socket = socket
-  this.fastify = fastify
-  return (...args) => fn(...args)
+const wrapWith = (socket, fastify, fn) => {
+  return function (...args) {
+    return fn(socket, fastify, ...args)
+  }
 }
 
 const registerEventsHandlers = (socket, fastify) => {
@@ -20,7 +20,7 @@ const registerEventsHandlers = (socket, fastify) => {
 
 }
 
-function handleDisconnecting() {
+const handleDisconnecting = (socket, fastify, handlers) => {
   const wrappedLeave = wrapWith(socket, fastify, handlers.leave);
   const { rooms } = socket;
   const validRooms = Array.from(rooms).filter(roomId => validate(roomId) && version(roomId) === 4);
@@ -45,9 +45,9 @@ const init = async (fastify) => {
     // socket.on('connect_error', sendError);
     // socket.on('connect_failed', sendError);
     
-    socket.on('disconnecting', () => {
+    socket.on('disconnect', () => {
       fastify.log.warn(`event: 'disconnecting', clientId: ${socket.id}`);
-      handleDisconnecting()
+      handleDisconnecting(socket, fastify, handlers)
     });
   });
 

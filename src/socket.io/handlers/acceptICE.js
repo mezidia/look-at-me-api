@@ -1,6 +1,6 @@
 const events = require('../events.js')
 
-function action({ peerId, iceCandidate }) {
+function action(socket, fastify, { peerId, iceCandidate }) {
 
   // fastify.log.info({
   //   event: 'ICE',

@@ -1,6 +1,6 @@
 const events = require('../events.js')
 
-function action({ peerId, from, sessionDescription }) {
+function action(socket, fastify, { peerId, from, sessionDescription }) {
   // fastify.log.info({
   //   event: 'SDP',
   //   SDP_type: sessionDescription.type,
