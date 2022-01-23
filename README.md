@@ -32,5 +32,5 @@ npm run build
 and run application with the:
 ```
 npm run start
-```.
+```
 Congrats! You have look-at-me platform on localhost:3000. 
