@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  look-be:
+    image: docker.io/la7rodectus/look-at-me-ws
+    container_name: look-at-me-ws
+    restart: always
+    ports:
+      - 8080:8080
+  look-ui:
+    image: docker.io/la7rodectus/look-at-me-ui
+    container_name: look-at-me-ui
+    ports:
+      - 3000:3000
+    links:
+      - look-be
