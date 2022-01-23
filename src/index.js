@@ -6,7 +6,7 @@ const app = require('fastify')(appConfig)
 
 app.register(require('fastify-socket.io'), {
   cors: {
-    origin: isProd ? 'http://look-at-me-ws.herokuapp.com/' : 'http://localhost:3000',
+    origin: 'http://localhost:3000',//isProd ? 'http://look-at-me-ws.herokuapp.com/' : 'http://localhost:3000',
     methods: ['GET']
   }
 })
