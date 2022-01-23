@@ -16,16 +16,19 @@ function action({ roomId, nickName, isAdmin }) {
   fastify.log.info(`event: 'SHARE_USER_INFO', roomId: ${roomId}, nickName: ${nickName}, isAdmin: ${isAdmin}`)
 
   clients.forEach(clientId => {
+    const clientSocket = fastify.io.sockets.sockets.get(clientId);
+    socket.data = {
+      nickName,
+      isAdmin,
+    }
     fastify.io.to(clientId).emit(events.ACCEPT_USER_INFO, {
       clientId: socket.id,
       nickName,
       isAdmin,
     });
-
     socket.emit(events.ACCEPT_USER_INFO, {
-      clientId: socket.id,
-      nickName,
-      isAdmin,
+      clientId,
+      ...clientSocket.data
     });
   });
 
