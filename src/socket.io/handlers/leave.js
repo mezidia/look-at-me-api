@@ -23,6 +23,20 @@ const action = (socket, fastify, { roomId }) => {
     socket.leave(roomId);
   }
 
+  const clients = Array.from(fastify.io.sockets.adapter.rooms.get(roomId) || []);
+
+  if (socket.data.isAdmin && clients.length) {
+    const newAdminClientId = clients[0]
+    const newAdminSocket= fastify.io.sockets.sockets.get(newAdminClientId);
+
+    fastify.log.info(`event: 'new admin', new admin: ${newAdminClientId}`)
+    newAdminSocket.emit(events.ACCEPT_USER_INFO, {
+      clientId: newAdminClientId,
+      ...newAdminSocket.data,
+      isAdmin: true
+    });
+  }
+
   shareRoomsInfo(fastify);
 }
 
