@@ -1,7 +1,7 @@
-const methods = require('./methods')
-const urls = require('./routes')
-const schemas = require('../schemas')
-const actions = require('../actions')
+const methods = require('./methods');
+const urls = require('./routes');
+const schemas = require('../schemas');
+const actions = require('../actions');
 
 const routes = [
   {
@@ -16,8 +16,8 @@ const routes = [
     // schema: schemas.healthCheck,
     handler: actions.root
   }
-]
+];
 
-const init = async app => routes.map(r => app.route(r))
+const init = async (app) => routes.map((r) => app.route(r));
 
-module.exports = init
+module.exports = init;

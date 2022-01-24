@@ -1,7 +1,7 @@
-const events = require('../events.js')
+const events = require('../events.js');
 
 function action(socket, fastify, { peerId, iceCandidate }) {
-  fastify.log.info(`event: 'ICE', peerId: ${peerId}`)
+  fastify.log.info(`event: 'ICE', peerId: ${peerId}`);
 
   fastify.io.to(peerId).emit(events.ICE_CANDIDATE, {
     peerId: socket.id,
@@ -10,4 +10,4 @@ function action(socket, fastify, { peerId, iceCandidate }) {
 
 }
 
-module.exports = action
+module.exports = action;
