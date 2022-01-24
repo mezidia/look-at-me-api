@@ -1,7 +1,7 @@
 # look-at-me-api
 
 ## About repository
-This is the api for [look-at-me](https://github.com/mezidia/look-at-me) platform.
+This is an api for [look-at-me](https://github.com/mezidia/look-at-me) platform.
 
 The api implements P2P connection using WebRTC standard. 
 
